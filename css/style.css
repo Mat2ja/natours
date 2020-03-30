@@ -15,7 +15,7 @@ Dark green: #28b485
 }
 
 body {
-	font-family: "Lato", sans-serif; /* because of inheritance (every child element inherits it, instead from the universal selector, its better practice */
+	font-family: "Lato", sans-serif; /* every child element inherits it, instead from the universal selector, better practice */
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 1.7;
@@ -33,10 +33,47 @@ body {
 		url(../img/hero.jpg);
 	background-size: cover;
 	background-position: top; /* image top stays but bottom gets cropped when resizing the screen*/
+	position: relative;
 	clip-path: polygon(
 		0 0,
 		100% 0,
 		100% 75vh,
 		0 100%
 	); /* distance from left(x-axis) and top(y-axis) for each of the corners of the shape*/
+}
+
+.logo-box {
+	position: absolute; /* if header werent relative, it would start at top-left corner of the screen, not condsidering body padding */
+	top: 40px;
+	left: 40px;
+}
+
+.logo {
+	height: 35px;
+}
+
+.text-box {
+	position: absolute;
+	top: 40%;
+	left: 50%; /* in relation to the parent element */
+	transform: translate(-50%, -50%); /* in relation to the element itself */
+}
+
+.heading-primary {
+	color: white;
+	text-transform: uppercase;
+}
+
+.heading-primary-main {
+	display: block;
+	font-size: 60px;
+	font-weight: 400;
+	letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+	display: block;
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: 17.4px;
 }

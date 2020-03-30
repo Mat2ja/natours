@@ -39,11 +39,11 @@ body {
 		100% 0,
 		100% 75vh,
 		0 100%
-	); /* distance from left(x-axis) and top(y-axis) for each of the corners of the shape*/
+	); /* distance from left(x-axis) and top(y-axis) for corner of the shape*/
 }
 
 .logo-box {
-	position: absolute; /* if header werent relative, it would start at top-left corner of the screen, not condsidering body padding */
+	position: absolute; /* if header werent relative, it would start at top-left corner of the screen, not condsidering <body> padding */
 	top: 40px;
 	left: 40px;
 }
@@ -52,12 +52,12 @@ body {
 	height: 35px;
 }
 
-
 .text-box {
 	position: absolute;
 	top: 40%;
 	left: 50%; /* in relation to the parent element */
 	transform: translate(-50%, -50%); /* in relation to the element itself */
+	text-align: center; /* centers the text in the middle of itself (we did this for the button) */
 }
 
 /** center with flexbox */
@@ -73,6 +73,7 @@ body {
 	text-transform: uppercase;
 	/*? fix for potential shaky animation at the end*/
 	backface-visibility: hidden;
+	margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -90,7 +91,7 @@ body {
 	*/
 }
 
-.heading-primary-sub { 
+.heading-primary-sub {
 	display: block;
 	font-size: 20px;
 	font-weight: 700;
@@ -101,7 +102,7 @@ body {
 @keyframes moveInLeft {
 	0% {
 		opacity: 0;
-		transform: translateX(-100px) ; /* left to right */
+		transform: translateX(-100px); /* left to right */
 	}
 	80% {
 		transform: translateX(10px);
@@ -124,4 +125,70 @@ body {
 		opacity: 1;
 		transform: translate(0px);
 	}
+}
+
+@keyframes moveInBottom {
+	0% {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0px);
+	}
+}
+
+.btn:link,
+.btn:visited {
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 15px 40px;
+	display: inline-block; /* bcs we added padding/margin so it occupied the space of other elements */
+	border-radius: 100px; /* any high number */
+	transition: all 0.2s; /* must be on the initial state */
+	position: relative; /* for the psuedoelement */
+}
+
+.btn:hover {
+	transform: translateY(-3px); /* goes up */
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+	transform: translateY(-1px); /* in relation to initial link state */
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+	background-color: #fff;
+	color: #777;
+}
+
+/*? pseudoelement is treated as a child of the element */
+.btn::after {
+	/** must specify content & display */
+	content: "";
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	border-radius: 100px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1; /* hidden behind the button */
+	transition: all .4s;
+}
+
+.btn-white::after {
+	background-color: #fff;
+}
+
+.btn:hover::after {
+	transform: scaleX(1.4) scaleY(1.6);
+	opacity: 0; /* it animates it fading away completely */
+}
+
+.btn-animated {
+	animation: moveInBottom .5s ease-out .75s;
+	animation-fill-mode: backwards; /* step 1 of animation applied before it even starts */
 }

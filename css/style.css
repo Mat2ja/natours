@@ -1,27 +1,21 @@
 *,
 *::before,
 *::after {
-  /* start clean, bcs browsers usually add some margins and padding */
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-  /* bcs its better practice to declare border-box it in <body> so every elemnt inherits it from body */ }
+  box-sizing: inherit; }
 
 html {
-  /* 62.5% of 16px (default browser font-size) 
-	  if we used pixels, user could't override our font-size */
   font-size: 62.5%;
-  /*! 10px */ }
+  /* 10px */ }
 
 body {
   font-family: "Lato", sans-serif;
-  /* every child inherits it, instead from the universal selector, better practice */
   font-weight: 400;
   line-height: 1.7;
   color: #777;
   padding: 3rem;
-  box-sizing: border-box;
-  /* width and height properties include content, padding and border */ }
+  box-sizing: border-box; }
 
 .header {
   height: 95vh;
@@ -30,75 +24,64 @@ body {
   background-position: top;
   /* image top stays but bottom gets cropped when resizing */
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /* distance from left(x-axis) and top(y-axis) for each corner of the shape */ }
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
 
-.header__logo-box {
-  position: absolute;
-  /* if header wasnt relative, it would start at top-left corner of the screen, not condsidering <body> padding */
-  top: 4rem;
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem; }
-
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  /* in relation to the parent element */
-  transform: translate(-50%, -50%);
-  /* in relation to the element itself */
-  text-align: center;
-  /* centers the button */ }
-
-/** center with flexbox */
-/* .text-box {
+/* center with flexbox 
+.text-box {
 	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-} */
+} 
+*/
 .heading-primary {
   color: white;
   text-transform: uppercase;
   /*? fix for potential shaky animation at the end*/
   backface-visibility: hidden;
   margin-bottom: 6rem; }
-
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  animation: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  /* 	animation-timing-function: cubic-bezier(0.15, 1.32, 0.3,-0.14); */
-  /* 
-	animation-iteration-count: 3; 
-	animation-delay: 3s;
-	animation-fill-mode: forwards; 
-	*/ }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
-  animation: moveInRight 1s ease-out; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    /* 	animation-timing-function: cubic-bezier(0.15, 1.32, 0.3,-0.14); */
+    /* 
+		animation-iteration-count: 3; 
+		animation-delay: 3s;
+		animation-fill-mode: forwards; 
+		*/ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; }
 
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem);
-    /* left to right */ }
+    transform: translateX(-10rem); }
   80% {
     transform: translateX(1rem); }
   100% {
     opacity: 1;
-    transform: translate(0);
-    /* the way it looked before the animation */ } }
+    transform: translate(0); } }
 
 @keyframes moveInRight {
   0% {
@@ -118,59 +101,44 @@ body {
     opacity: 1;
     transform: translate(0); } }
 
-.btn:link,
-.btn:visited {
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  /* bcs we added padding/margin so it occupied the space of other elements */
-  border-radius: 10rem;
-  /* any high number */
-  transition: all 0.2s;
-  /* must be on the initial state */
-  position: relative;
-  /* for the psuedoelement */ }
-
-.btn:hover {
-  transform: translateY(-0.3rem);
-  /* goes up */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-
-.btn:active {
-  transform: translateY(-0.1rem);
-  /* in relation to initial link state */
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
-.btn--white {
-  background-color: #fff;
-  color: #777; }
-
-/*? pseudoelement is treated as a child of the element */
-.btn::after {
-  /** must specify content & display */
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  /* hidden behind the button */
-  transition: all 0.4s; }
-
-.btn--white::after {
-  background-color: #fff; }
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-  /* it animates it fading away completely */ }
-
-.btn--animated {
-  animation: moveInBottom 0.5s ease-out 0.75s;
-  animation-fill-mode: backwards;
-  /* step 1 of animation applied before it even starts */ }
+.btn {
+  /*? pseudoelement is treated as a child of the element */ }
+  .btn:link, .btn:visited {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    /* bcs we added padding/margin so it occupied the space of other elements */
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative;
+    /* for the psuedoelement */ }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s; }
+  .btn--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards; }

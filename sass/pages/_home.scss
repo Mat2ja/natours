@@ -13,11 +13,16 @@
 		),
 		url(../img/nat-4.jpg);
 	background-size: cover;
-    transform: skewY(-8deg);
-    margin-top: -12rem;
+	transform: skewY(-8deg);
+	margin-top: -16rem;
 
 	/* select direct child - row */
 	& > * {
 		transform: skewY(8deg);
 	}
+}
+.section-tours {
+	background: $color-grey-light-1;
+	padding: 30rem 0 60rem;
+	margin-top: -16rem;
 }

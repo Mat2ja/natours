@@ -48,7 +48,7 @@ body {
 		$color-primary-dark
 	);
 	display: inline-block;
-	background-clip: text; // morao stavit da mi ne stavlja error na -webkitu, pojma nemam dal ista radi
+	background-clip: text;
 	-webkit-background-clip: text;
 	color: transparent;
 	letter-spacing: 0.2rem;

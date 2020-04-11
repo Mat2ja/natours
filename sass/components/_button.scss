@@ -35,6 +35,15 @@
 		}
 	}
 
+	&--green {
+		background-color: $color-primary;
+		color: $color-white;
+
+		&::after {
+			background-color: $color-primary;
+		}
+	}
+
 	/*? pseudoelement is treated as a child of the element */
 	&::after {
 		content: "";

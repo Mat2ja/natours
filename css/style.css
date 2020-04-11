@@ -52,6 +52,7 @@ body {
   color: white;
   text-transform: uppercase;
   /*? fix for potential shaky animation at the end*/
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   margin-bottom: 6rem; }
   .heading-primary--main {
@@ -59,8 +60,11 @@ body {
     font-size: 6rem;
     font-weight: 400;
     letter-spacing: 3.5rem;
+    -webkit-animation: moveInLeft;
     animation: moveInLeft;
+    -webkit-animation-duration: 1s;
     animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out;
     /* 	animation-timing-function: cubic-bezier(0.15, 1.32, 0.3,-0.14); */
     /* 
@@ -73,20 +77,24 @@ body {
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1.75rem;
+    -webkit-animation: moveInRight 1s ease-out;
     animation: moveInRight 1s ease-out; }
 
 .heading-secondary {
   font-size: 3.5rem;
   text-transform: uppercase;
   font-weight: 700;
+  background-image: -webkit-gradient(linear, left top, right top, from(#7ed56f), to(#28b485));
   background-image: linear-gradient(to right, #7ed56f, #28b485);
   display: inline-block;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   letter-spacing: 0.2rem;
+  -webkit-transition: all 0.2s;
   transition: all 0.2s; }
   .heading-secondary:hover {
+    -webkit-transform: skew(15deg, 2deg) scale(1.1);
     transform: skew(15deg, 2deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
 
@@ -182,6 +190,7 @@ body {
     border-radius: 2px;
     position: absolute;
     z-index: 10;
+    -webkit-transition: all 0.2s;
     transition: all 0.2s;
     outline-offset: 2rem; }
     .composition__photo--p1 {
@@ -195,42 +204,88 @@ body {
       top: 10rem; }
     .composition__photo:hover {
       outline: 1.5rem solid #55c57a;
+      -webkit-transform: scale(1.05) translateY(-0.5rem);
       transform: scale(1.05) translateY(-0.5rem);
       box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
       z-index: 20; }
   .composition:hover .composition__photo:not(:hover) {
     color: #000;
+    -webkit-transform: scale(0.95);
     transform: scale(0.95); }
 
 .card {
   /* perspective has to be on the parent */
+  -webkit-perspective: 150rem;
   perspective: 150rem;
   position: relative;
-  height: 50rem; }
+  height: 52rem; }
   .card__side {
-    color: white;
-    font-size: 3rem;
-    height: 50rem;
-    transition: all .8s ease;
+    height: 52rem;
+    -webkit-transition: all 0.8s ease;
+    transition: all 0.8s ease;
     position: absolute;
     /* took them out of natural flow so the card(parent) collapsed - has no height - nothing we can do except to specify the same height for parent */
     top: 0;
     left: 0;
     width: 100%;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     /* we wont see back side of front card */
     border-radius: 3px;
+    overflow: hidden;
+    /* bcs the image was overlflowing the parent, didnt have top curved corners anymore */
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
     .card__side--front {
       background: #fff; }
     .card__side--back {
+      -webkit-transform: rotateY(180deg);
       transform: rotateY(180deg); }
       .card__side--back-1 {
         background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
   .card:hover .card__side--front {
+    -webkit-transform: rotateY(-180deg);
     transform: rotateY(-180deg); }
   .card:hover .card__side--back {
+    -webkit-transform: rotateY(0deg);
     transform: rotateY(0deg); }
+  .card__picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    /* x and y axis */ }
+    .card__picture--1 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/nat-5.jpg);
+      /* only one level up, considering style.css */ }
+  .card__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: #fff;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%; }
+  .card__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; }
+    .card__heading-span--1 {
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+  .card__details {
+    padding: 3rem; }
+    .card__details ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; }
+      .card__details ul li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem; }
+        .card__details ul li:not(:last-child) {
+          border-bottom: 1px solid #eee; }
 
 .feature-box {
   background: rgba(255, 255, 255, 0.8);
@@ -239,16 +294,21 @@ body {
   text-align: center;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s; }
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s; }
   .feature-box__icon {
     padding: 3rem 2rem 0;
     font-size: 6rem;
     margin-bottom: 0.5rem;
     color: transparent;
+    background: -webkit-gradient(linear, left top, right top, from(#7ed56f), to(#28b485));
     background: linear-gradient(to right, #7ed56f, #28b485);
     -webkit-background-clip: text;
     background-clip: text; }
   .feature-box:hover {
+    -webkit-transform: translateY(-1.5rem) scale(1.03);
     transform: translateY(-1.5rem) scale(1.03); }
 
 .row {
@@ -280,11 +340,13 @@ body {
 
 .header {
   height: 95vh;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(126, 213, 111, 0.8)), to(rgba(40, 180, 133, 0.8))), url(../img/hero.jpg);
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
   background-size: cover;
   background-position: top;
   /* image top stays but bottom gets cropped when resizing */
   position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
   .header__logo-box {
     position: absolute;
@@ -296,6 +358,7 @@ body {
     position: absolute;
     top: 40%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center; }
 

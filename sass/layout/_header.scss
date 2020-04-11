@@ -1,5 +1,12 @@
 .header {
 	height: 95vh;
+	background-image: -webkit-gradient(
+			linear,
+			left top, right bottom,
+			from(rgba($color-primary-light, 0.8)),
+			to(rgba($color-primary-dark, 0.8))
+		),
+		url(../img/hero.jpg);
 	background-image: linear-gradient(
 			to right bottom,
 			rgba($color-primary-light, 0.8),
@@ -9,7 +16,8 @@
 	background-size: cover;
 	background-position: top; /* image top stays but bottom gets cropped when resizing */
 	position: relative;
-	clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+	        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
 	&__logo-box {
 		position: absolute;
@@ -25,7 +33,8 @@
 		position: absolute;
 		top: 40%;
 		left: 50%;
-		transform: translate(-50%, -50%);
+		-webkit-transform: translate(-50%, -50%);
+		        transform: translate(-50%, -50%);
 		text-align: center;
 	}
 }

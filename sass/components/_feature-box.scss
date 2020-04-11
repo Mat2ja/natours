@@ -4,14 +4,24 @@
 	padding: 2.5rem;
 	text-align: center;
 	border-radius: 3px;
-	box-shadow:  $shadow-card;
-    transition: transform 0.3s;
+	box-shadow: $shadow-card;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	transition: transform 0.3s, -webkit-transform 0.3s;
 
 	&__icon {
 		padding: 3rem 2rem 0;
 		font-size: 6rem;
 		margin-bottom: 0.5rem;
 		color: transparent;
+		background: -webkit-gradient(
+			linear,
+			left top,
+			right top,
+			from($color-primary-light),
+			to($color-primary-dark)
+		);
 		background: linear-gradient(
 			to right,
 			$color-primary-light,
@@ -22,6 +32,7 @@
 	}
 
 	&:hover {
+		-webkit-transform: translateY(-1.5rem) scale(1.03);
 		transform: translateY(-1.5rem) scale(1.03);
 	}
 }

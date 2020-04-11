@@ -10,6 +10,7 @@ body {
 	color: white;
 	text-transform: uppercase;
 	/*? fix for potential shaky animation at the end*/
+	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	margin-bottom: 6rem;
 
@@ -18,8 +19,11 @@ body {
 		font-size: 6rem;
 		font-weight: 400;
 		letter-spacing: 3.5rem;
+		-webkit-animation: moveInLeft;
 		animation: moveInLeft;
+		-webkit-animation-duration: 1s;
 		animation-duration: 1s;
+		-webkit-animation-timing-function: ease-in-out;
 		animation-timing-function: ease-in-out;
 		/* 	animation-timing-function: cubic-bezier(0.15, 1.32, 0.3,-0.14); */
 		/* 
@@ -34,6 +38,7 @@ body {
 		font-size: 2rem;
 		font-weight: 700;
 		letter-spacing: 1.75rem;
+		-webkit-animation: moveInRight 1s ease-out;
 		animation: moveInRight 1s ease-out;
 	}
 }
@@ -42,6 +47,13 @@ body {
 	font-size: 3.5rem;
 	text-transform: uppercase;
 	font-weight: 700;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		from($color-primary-light),
+		to($color-primary-dark)
+	);
 	background-image: linear-gradient(
 		to right,
 		$color-primary-light,
@@ -52,9 +64,11 @@ body {
 	-webkit-background-clip: text;
 	color: transparent;
 	letter-spacing: 0.2rem;
+	-webkit-transition: all 0.2s;
 	transition: all 0.2s;
 
 	&:hover {
+		-webkit-transform: skew(15deg, 2deg) scale(1.1);
 		transform: skew(15deg, 2deg) scale(1.1);
 		text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
 	}

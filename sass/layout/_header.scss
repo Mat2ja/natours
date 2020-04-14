@@ -15,6 +15,7 @@
 		url(../img/hero.jpg);
 	background-size: cover;
 	background-position: top; /* image top stays but bottom gets cropped when resizing */
+	background-attachment: fixed;
 	position: relative;
 	-webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 	        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
@@ -39,11 +40,3 @@
 	}
 }
 
-/* center with flexbox 
-.text-box {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-} 
-*/

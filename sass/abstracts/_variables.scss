@@ -13,7 +13,9 @@ $color-tertiary-dark: #5643fa;
 $color-grey-light-1: #f7f7f7;
 $color-grey-light-2: #eee;
 
-$color-grey-dark: #777;
+$color-grey-dark-1: #777;
+$color-grey-dark-2: #999;
+
 $color-white: #fff;
 $color-black: #000;
 
@@ -27,6 +29,7 @@ $gutter-horizontal: 6rem; /* inbetween columns */
 
 // BOX-SHADOWS
 $shadow-card: 0 1.5rem 4rem rgba($color-black, 0.15);
+
 $shadow-button-white-hover: 0 1rem 2rem rgba($color-black, 0.2);
 $shadow-button-white-active: 0 0.5rem 1rem rgba($color-black, 0.2);
 $shadow-button-text-hover: 0 1rem 2rem rgba($color-black, 0.15);
@@ -49,3 +52,6 @@ $linear-gradient-tertiary: linear-gradient(
 	$color-tertiary-light,
 	$color-tertiary-dark
 );
+
+//
+$border-radius: 3px;

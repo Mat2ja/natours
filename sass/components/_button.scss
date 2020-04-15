@@ -1,4 +1,5 @@
 .btn {
+	&,
 	&:link,
 	&:visited {
 		font-size: $default-font-size;
@@ -9,6 +10,10 @@
 		border-radius: 10rem;
 		transition: all 0.2s;
 		position: relative; /* for the psuedoelement */
+
+		// Change for the <button> element
+		border: none;
+		cursor: pointer;
 	}
 
 	&:hover {
@@ -21,14 +26,16 @@
 		}
 	}
 
-	&:active {
+	&:active,
+	&:focus {
+		outline: none;
 		transform: translateY(-0.1rem);
 		box-shadow: $shadow-button-white-active;
 	}
 
 	&--white {
 		background-color: $color-white;
-		color: $color-grey-dark;
+		color: $color-grey-dark-1;
 
 		&::after {
 			background-color: $color-white;
@@ -73,19 +80,18 @@
 		text-decoration: none;
 		border-bottom: 1px solid $color-primary;
 		padding: 3px;
-		transition: all .3s;
+		transition: all 0.3s;
 	}
 
 	&:hover {
 		background: $color-primary;
 		color: $color-white;
-		transform: translateY(-.2rem);
-		box-shadow:$shadow-button-text-hover;
-		
+		transform: translateY(-0.2rem);
+		box-shadow: $shadow-button-text-hover;
 	}
 
 	&:active {
 		transform: translateY(-0.1rem);
-		box-shadow:$shadow-button-text-active;
+		box-shadow: $shadow-button-text-active;
 	}
 }

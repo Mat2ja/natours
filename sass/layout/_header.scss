@@ -2,7 +2,8 @@
 	height: 95vh;
 	background-image: -webkit-gradient(
 			linear,
-			left top, right bottom,
+			left top,
+			right bottom,
 			from(rgba($color-primary-light, 0.8)),
 			to(rgba($color-primary-dark, 0.8))
 		),
@@ -18,7 +19,7 @@
 	background-attachment: fixed;
 	position: relative;
 	-webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-	        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
 	&__logo-box {
 		position: absolute;
@@ -31,12 +32,7 @@
 	}
 
 	&__text-box {
-		position: absolute;
-		top: 40%;
-		left: 50%;
-		-webkit-transform: translate(-50%, -50%);
-		        transform: translate(-50%, -50%);
+		@include center-horizontal-vertical;
 		text-align: center;
 	}
 }
-

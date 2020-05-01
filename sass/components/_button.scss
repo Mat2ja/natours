@@ -18,6 +18,7 @@
 		// Change for the <button> element
 		border: none;
 		cursor: pointer;
+
 	}
 
 	&:hover {
@@ -55,7 +56,6 @@
 		}
 	}
 
-	/*? pseudoelement is treated as a child of the element */
 	&::after {
 		content: "";
 		display: inline-block;

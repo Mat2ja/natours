@@ -7,7 +7,7 @@
 		font-family: inherit;
 		font-size: 1.5rem;
 		color: inherit;
-		padding: 1.5rem 2rem;
+		padding: 1rem 2rem;
 		border-radius: 2px;
 		background-color: rgba($color: $color-white, $alpha: 0.5);
 		border: none;
@@ -91,7 +91,11 @@
 
 	&__radio-input:checked ~ &__radio-label &__radio-button:after {
         opacity: 1;
-    }
+	}
+	
+	.heading-secondary {
+		padding: 0;
+	}
 
 
     

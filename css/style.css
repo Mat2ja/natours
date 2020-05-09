@@ -1,3 +1,19 @@
+/* 
+0 - 600px:			Phone
+600 - 900px:		Tablet portrait
+900 - 1200px:		Tablet landscape
+[1200 - 2200px]		OUR NORMAL STYLE
+2200px + :			Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px (aka browser default, we cant choose the size)
+doesn't work with rems
+*/
 /* inbetween columns */
 @keyframes moveInLeft {
   0% {
@@ -36,8 +52,16 @@
 
 html {
   font-size: 62.5%;
-  /* 10px */
   scroll-behavior: smooth; }
+  @media (min-width: 137.5em) {
+    html {
+      font-size: 75%; } }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
 
 body {
   box-sizing: border-box; }
@@ -55,10 +79,10 @@ body {
   /*? fix for potential shaky animation at the end*/
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  margin-bottom: 6rem; }
+  margin-bottom: 7rem; }
   .heading-primary--main {
     display: block;
-    font-size: 6rem;
+    font-size: 8rem;
     font-weight: 400;
     letter-spacing: 3.5rem;
     -webkit-animation: moveInLeft;
@@ -75,7 +99,7 @@ body {
 		*/ }
   .heading-primary--sub {
     display: block;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 1.75rem;
     -webkit-animation: moveInRight 1s ease-out;

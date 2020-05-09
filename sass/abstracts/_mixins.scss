@@ -13,3 +13,49 @@
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
+
+// MEDIA QUERY MANAGER
+/* 
+0 - 600px:			Phone
+600 - 900px:		Tablet portrait
+900 - 1200px:		Tablet landscape
+[1200 - 2200px]		OUR NORMAL STYLE
+2200px + :			Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px (aka browser default, we cant choose the size)
+doesn't work with rems
+*/
+
+@mixin respond($breakpoint) {
+	@if $breakpoint == phone {
+		/* 600px / 16px = 37.5em */
+		@media (max-width: 37.5em) {
+			//600px
+			@content;
+		}
+	}
+	@if $breakpoint == tab-port {
+		@media (max-width: 56.25em) {
+			//900px
+			@content;
+		}
+	}
+	@if $breakpoint == tab-land {
+		@media (max-width: 75em) {
+			//1200px
+			@content;
+		}
+	}
+	@if $breakpoint == big-desktop {
+		//2200px
+		@media (min-width: 137.5em) {
+			@content;
+		}
+	}
+}

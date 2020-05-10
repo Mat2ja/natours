@@ -671,14 +671,27 @@ body {
     transform: translate(-50%, -50%) scale(0.25);
     /*  moramo ponovit transform iz mixina jer element moze imati samo jedan transform */
     transition: all 0.5s 0.2s cubic-bezier(0.34, 1.4, 0.64, 1); }
+    @media (max-width: 75em) {
+      .popup__content {
+        width: 90%; } }
   .popup__left {
     width: calc(100% / 3);
     display: table-cell; }
+    @media (max-width: 75em) {
+      .popup__left {
+        display: none; } }
   .popup__right {
     width: calc(100% - 100% / 3);
     display: table-cell;
     vertical-align: middle;
-    padding: 3rem 5rem; }
+    padding: 3rem 5rem;
+    /* 600px / 16px = 37.5em */ }
+    .popup__right .heading-secondary {
+      padding: 0; }
+    @media (max-width: 75em) {
+      .popup__right {
+        display: block;
+        width: 100%; } }
   .popup__img {
     display: block;
     width: 100%; }
@@ -692,7 +705,14 @@ body {
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
     -moz-hyphens: auto;
-    hyphens: auto; }
+    hyphens: auto;
+    /* 600px / 16px = 37.5em */ }
+    @media (max-width: 75em) {
+      .popup__text {
+        column-count: 3; } }
+    @media (max-width: 37.5em) {
+      .popup__text {
+        column-count: 1; } }
   .popup:target {
     opacity: 1;
     visibility: visible; }

@@ -24,11 +24,19 @@
 		opacity: 0;
 		transform: translate(-50%, -50%) scale(0.25); /*  moramo ponovit transform iz mixina jer element moze imati samo jedan transform */
 		transition: all 0.5s 0.2s cubic-bezier(0.34, 1.4, 0.64, 1);
+
+		@include respond(tab-land) {
+			width: 90%;
+		}
 	}
 
 	&__left {
 		width: calc(100% / 3);
 		display: table-cell;
+
+		@include respond(tab-land) {
+			display: none;
+		}
 	}
 
 	&__right {
@@ -36,6 +44,17 @@
 		display: table-cell;
 		vertical-align: middle;
 		padding: 3rem 5rem;
+
+		.heading-secondary {
+			padding: 0;
+		}
+
+		@include respond(tab-land) {
+			display: block;
+			width: 100%;
+		}
+		@include respond(phone) {
+		}
 	}
 
 	&__img {
@@ -55,6 +74,14 @@
 		-ms-hyphens: auto;
 		-moz-hyphens: auto;
 		hyphens: auto;
+
+		@include respond(tab-land) {
+			column-count: 3;
+		}
+
+		@include respond(phone) {
+			column-count: 1;
+		}
 	}
 
 	&:target {

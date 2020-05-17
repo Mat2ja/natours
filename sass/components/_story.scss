@@ -29,10 +29,17 @@
 		width: 15rem;
 		height: 15rem;
 		float: left;
-		shape-outside: circle(50% at 50% 50%);
-		clip-path: circle(50% at 50% 50%);
 		transform: translateX(-3rem) skewX(12deg);
 		margin-bottom: 0.5rem;
+		overflow: hidden; /* for the browsers that dont support clip path, cuts the image if bigger than shape */
+		border-radius: 50%;
+
+		@supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+			shape-outside: circle(50% at 50% 50%);
+			-webkit-clip-path: circle(50% at 50% 50%);
+			clip-path: circle(50% at 50% 50%);
+			border-radius: none;
+		}
 
 		@include respond(phone) {
 			transform: translate(-2rem) skewX(0);

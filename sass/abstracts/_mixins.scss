@@ -19,8 +19,8 @@
 0 - 600px:			Phone
 600 - 900px:		Tablet portrait
 900 - 1200px:		Tablet landscape
-[1200 - 2200px]		OUR NORMAL STYLE
-2200px + :			Big desktop
+[1200 - 2000px]		OUR NORMAL STYLE
+2000px + :			Big desktop
 
 $breakpoint arguement choices:
 - phone
@@ -55,8 +55,8 @@ doesn't work with rems
 		}
 	}
 	@if $breakpoint == big-desktop {
-		//2200px
-		@media (min-width: 137.5em) {
+		//2000px
+		@media (min-width: 125em) {
 			@content;
 		}
 	}

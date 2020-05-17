@@ -160,7 +160,9 @@
 	// MEDIA QUERY
 	//////////////////////
 
-	@include respond(tab-port) {
+	/* added full media query so that we identify touch devices */
+	// @include respond(tab-port) {
+	@media only screen and (max-width: 56.25em), only screen and (hover: none) {
 		height: auto;
 		background-color: $color-white;
 		box-shadow: $shadow-card;

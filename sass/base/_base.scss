@@ -28,7 +28,6 @@ html {
 	}
 	scrollbar-width: thin;
 	scrollbar-color: $color-primary $color-grey-light-1;
-
 }
 
 body {
@@ -38,6 +37,9 @@ body {
 	@include respond(tab-port) {
 		padding: 0;
 	}
+}
 
-
+::selection {
+	background-color: $color-primary;
+	color: $color-white;
 }
